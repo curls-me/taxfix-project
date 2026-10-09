@@ -1,0 +1,18 @@
+# Local-only notes (decision log)
+local docs/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+
+# OS
+.DS_Store
