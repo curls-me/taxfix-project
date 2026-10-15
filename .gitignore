@@ -19,3 +19,7 @@ test-results/
 
 # Industry news (local-only)
 industry news/
+
+# TypeScript
+next-env.d.ts
+*.tsbuildinfo
