@@ -15,7 +15,7 @@ Goal of the set-up: go from a short discovery to a shareable prototype fast and 
 - **Several tickets at once:** `/pipeline TFX-NN TFX-NN ...` runs them all the way to local verification, with one stop for product decisions, and ends in one draft PR.
 - **Verify before push.** `/verify` clicks through every acceptance criterion locally; nothing is pushed until Marina says "push".
 - **Quick mode for the live interview.** The prototype is prepared in advance, then improved or extended live. Add `quick` to any command (e.g. `/spec quick vat-overview`): all questions in one message, half-page outputs.
-- **Tickets are local.** One file per ticket in `tickets/` (`TFX-01-<slug>.md`, status on the first line: Backlog, In progress, In review, Done; `/spec` adds a "Spec agreed" line when ready to build). Linear is not connected.
+- **Tickets are local.** One file per ticket in `tickets/` (`TFX-01-<slug>.md`, status on the first line: Backlog (parked, not in the pipeline), Ready (Marina approved it; `/pipeline` picks these up), In progress, In review, Done; `/spec` adds a "Spec agreed" line when ready to build). Linear is not connected.
 - **Sessions end with `/decision-log`**, which appends to `local docs/decision-log.md`.
 - **Ask when unsure** whether Marina wants discussion or action. One line.
 
