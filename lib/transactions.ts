@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import { transactions as mock, type Transaction } from "@/data/mock";
 
 // Browser-only store: tester edits and deletions layered over the mock data.
-// `added` is where the add flow (TFX-03) will put new transactions.
 type Stored = {
   added: Transaction[];
   edits: Record<string, Partial<Transaction>>;
@@ -53,16 +52,22 @@ export function useTransactions() {
   return {
     ready,
     all,
+    add: (t: Transaction) => update((s) => ({ ...s, added: [...s.added, t] })),
     edit: (id: string, patch: Partial<Transaction>) =>
       update((s) => ({ ...s, edits: { ...s.edits, [id]: { ...s.edits[id], ...patch } } })),
     remove: (id: string) => update((s) => ({ ...s, deleted: [...s.deleted, id] })),
   };
 }
 
-export const gross = (t: Pick<Transaction, "net" | "vatRate">) =>
-  Math.round(t.net * (100 + t.vatRate)) / 100;
-export const vatAmount = (t: Pick<Transaction, "net" | "vatRate">) =>
-  Math.round(t.net * t.vatRate) / 100;
+type Amounts = Pick<Transaction, "net" | "vatRate" | "vatOverride" | "grossOverride">;
+
+export const vatAmount = (t: Amounts) =>
+  t.vatOverride ?? Math.round(t.net * t.vatRate) / 100;
+export const gross = (t: Amounts) =>
+  t.grossOverride ??
+  (t.vatOverride != null
+    ? Math.round((t.net + t.vatOverride) * 100) / 100
+    : Math.round(t.net * (100 + t.vatRate)) / 100);
 
 export const eur = (n: number) =>
   new Intl.NumberFormat("en-DE", { style: "currency", currency: "EUR" }).format(n);

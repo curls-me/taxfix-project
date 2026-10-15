@@ -15,6 +15,10 @@ export type Transaction = {
   vatPeriod: string; // YYYY-MM, monthly filing
   category?: string; // expenses only
   paymentDate?: string; // income only, ISO date; set once paid
+  invoiceNumber?: string;
+  vatOverride?: number | null; // tester-typed VAT; null/absent = calculated
+  grossOverride?: number | null; // tester-typed gross; null/absent = calculated
+  zeroVatReason?: string; // expenses at 0% only
 };
 
 export type User = {
