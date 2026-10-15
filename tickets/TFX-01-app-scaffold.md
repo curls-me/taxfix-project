@@ -1,4 +1,4 @@
-Status: In review
+Status: Done
 # TFX-01 — App scaffold and first Vercel deploy
 
 First piece of work. Statuses: `Backlog` → `In progress` → `In review` → `Done`. Full map: `docs/information-architecture.md`.
