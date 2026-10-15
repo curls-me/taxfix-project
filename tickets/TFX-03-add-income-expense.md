@@ -1,4 +1,4 @@
-Status: In review
+Status: Done
 # TFX-03 — Add income and add expense
 
 Map: `docs/information-architecture.md`. Depends on TFX-02.
