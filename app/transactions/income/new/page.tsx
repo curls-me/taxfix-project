@@ -1,5 +1,5 @@
-import Placeholder from "@/components/Placeholder";
+import TransactionForm from "@/components/TransactionForm";
 
 export default function Page() {
-  return <Placeholder title="Add income" />;
+  return <TransactionForm type="income" />;
 }
