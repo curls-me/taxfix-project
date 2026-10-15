@@ -22,7 +22,8 @@ export default function TransactionList({ type }: { type: "income" | "expense" }
   return (
     <div>
       <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Transactions</h1>
-      <nav aria-label="Transactions" className="mt-6 flex gap-2">
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+      <nav aria-label="Transactions" className="flex gap-2">
         {TABS.map((tab) => (
           <Link
             key={tab.href}
@@ -36,6 +37,13 @@ export default function TransactionList({ type }: { type: "income" | "expense" }
           </Link>
         ))}
       </nav>
+      <Link
+        href={isIncome ? "/transactions/income/new" : "/transactions/expenses/new"}
+        className="rounded-lg bg-forest px-5 py-2 font-semibold text-white"
+      >
+        {isIncome ? "Add income" : "Add expense"}
+      </Link>
+      </div>
 
       {!ready ? null : rows.length === 0 ? (
         <div className="mt-8 rounded-xl bg-bar p-6">

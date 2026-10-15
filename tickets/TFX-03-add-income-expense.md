@@ -25,6 +25,7 @@ One shared form for adding income and adding an expense: invoice number, issue d
 - Items get an id and are stored with the TFX-02 browser-storage items.
 
 ## Acceptance criteria
+- [x] Income and Expenses tabs and the Dashboard each show an Add income / Add expense button.
 - [x] Add income and Add expense open the same form with the right party label and fields.
 - [x] Required fields are marked and block saving when empty, with an inline message.
 - [x] VAT and gross pre-fill from net and rate; overwriting shows "edited" and Reset restores the calculated values.
