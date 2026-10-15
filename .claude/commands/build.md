@@ -1,11 +1,13 @@
 ---
 name: build
-description: Build one agreed ticket ("/build TFX-NN"): short plan, implement on a branch, push, open a draft PR, update the ticket status.
+description: Build one or more agreed tickets ("/build TFX-NN [TFX-NN ...]"): short plan, implement on a branch, verify locally, push after Marina says "push", open a draft PR.
 ---
 
 # Build
 
-Arguments: `$ARGUMENTS` (a ticket ID, e.g. `TFX-03`).
+Arguments: `$ARGUMENTS` (a ticket ID, e.g. `TFX-03`, or several in build order).
+
+**Batch mode** (several IDs): one branch `feat/tfx-<first>-<last>-<slug>`, tickets built in the given order, one commit per ticket (`TFX-NN: <title>`), one draft PR for all.
 
 ## Step 1: Check
 Read `tickets/TFX-NN-*.md`. If it has no `Spec agreed` line or has unresolved open questions, stop and say so: run `/spec` first. Read the feature's `docs/features/<slug>/ux.md`; if it is missing, ask whether to run `/ux-design` or skip it. Open only the code files you will change.
@@ -20,10 +22,12 @@ Follow the `lean` skill (`.claude/skills/lean/SKILL.md`) for this and the next s
 - All figures are placeholders and the UI shows the demo note (see CLAUDE.md).
 - Run `npm run build` once before pushing; fix errors, don't re-run otherwise.
 
-## Step 4: Hand off
-- Set the ticket to `Status: In review` and tick the met criteria.
-- Commit, push, open a **draft PR** titled `TFX-NN: <title>`. Stop; Marina merges.
-- Reply with the PR link, the Vercel preview link once it appears, and any criterion not met.
+## Step 4: Verify locally
+- Commit (one commit per ticket in batch mode). Don't push yet.
+- Run `/verify` with the ticket ID(s). Marina then tests the localhost link by hand.
+- Wait for Marina's "push".
 
-## Step 5: Run it locally for Marina
-Start the dev server on the ticket's branch (`preview_start` with `dev`), open the page(s) the ticket changed, and give her the localhost link so she can test by hand. Tell her which pages to try. Leave the server running.
+## Step 5: Hand off
+- Set the ticket(s) to `Status: In review`.
+- Push, open a **draft PR** titled `TFX-NN: <title>` (batch: `TFX-NN, NN: <short title>`, one section per ticket). Stop; Marina merges.
+- Reply with the PR link, the Vercel preview link once it appears, and any criterion not met.

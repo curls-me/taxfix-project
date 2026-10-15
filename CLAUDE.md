@@ -11,11 +11,18 @@ Goal of the set-up: go from a short discovery to a shareable prototype fast and 
 ## Working agreements
 
 - **Branch, never `main`.** Work on a branch, push it, open a **draft PR**, then stop. Marina reviews and merges on GitHub.
-- **Spec before build.** Order: `/problem-definition` → `/spec` → `/ux-design` →`/build`. Skip a step only if Marina says so. Each feature's docs live in `docs/features/<slug>/`.
+- **Spec before build.** Order: `/problem-definition` → `/spec` → `/ux-design` → `/build` → `/verify`. Skip a step only if Marina says so. Each feature's docs live in `docs/features/<slug>/`.
+- **Several tickets at once:** `/pipeline TFX-NN TFX-NN ...` runs them all the way to local verification, with one stop for product decisions, and ends in one draft PR.
+- **Verify before push.** `/verify` clicks through every acceptance criterion locally; nothing is pushed until Marina says "push".
 - **Quick mode for the live interview.** The prototype is prepared in advance, then improved or extended live. Add `quick` to any command (e.g. `/spec quick vat-overview`): all questions in one message, half-page outputs.
 - **Tickets are local.** One file per ticket in `tickets/` (`TFX-01-<slug>.md`, status on the first line: Backlog, In progress, In review, Done; `/spec` adds a "Spec agreed" line when ready to build). Linear is not connected.
 - **Sessions end with `/decision-log`**, which appends to `local docs/decision-log.md`.
 - **Ask when unsure** whether Marina wants discussion or action. One line.
+
+## Git flow
+
+- `main` = what's live. A branch = Claude's draft copy. Push = upload the draft to GitHub (Vercel builds a preview). Draft PR = request to merge. Merge = Marina, on GitHub. Close-out (`/git-closeout`) = sync the laptop with GitHub and delete the branch.
+- Every session starts with `git fetch`; if local `main` is behind `origin/main`, fast-forward it before branching.
 
 ## Token efficiency (applies to every session)
 
@@ -23,7 +30,7 @@ Goal of the set-up: go from a short discovery to a shareable prototype fast and 
 - Open a file in `docs/reference-screens/` only when a ticket or Marina names it (images are expensive).
 - Full company research lives outside the repo: `~/Documents/01_Career/01_Job_Search/2026/Company_Research/Taxfix`. Read it only when asked.
 - If a task can be done by Marina by hand in a minute, or by a free AI (Gemini, Perplexity, GPT), say so and offer a ready-to-paste prompt instead of doing it.
-- Don't re-run tests or re-verify unless code changed. Don't launch subagents or multi-agent workflows without asking.
+- Don't re-run tests or re-verify unless code changed. Don't launch subagents or multi-agent workflows without asking (running `/pipeline` counts as asking).
 - Sonnet for building and drafts; Opus only for the spec and plan.
 
 ## Stack
