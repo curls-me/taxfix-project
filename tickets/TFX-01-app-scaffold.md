@@ -47,3 +47,5 @@ Any tax logic, forms, data entry, real content on the pages (see TFX-02 to TFX-0
 
 ## Copy
 Demo note as above. Page titles: "Dashboard", "Transactions", "Settings", "VAT return". Placeholder line: "Coming soon".
+
+Spec agreed 2026-10-15.
