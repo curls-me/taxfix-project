@@ -1,4 +1,4 @@
-Status: In progress
+Status: In review
 # TFX-07 — Create invoice
 
 Map: `docs/information-architecture.md`. Depends on TFX-03 (income storage), TFX-05 (profile, for the sender block). UX: `docs/features/create-invoice/ux.md`.
