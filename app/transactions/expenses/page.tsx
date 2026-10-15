@@ -1,5 +1,5 @@
-import Placeholder from "@/components/Placeholder";
+import TransactionList from "@/components/TransactionList";
 
 export default function Page() {
-  return <Placeholder title="Transactions" />;
+  return <TransactionList type="expense" />;
 }
