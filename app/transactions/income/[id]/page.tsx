@@ -3,7 +3,7 @@
 import { use, useState } from "react";
 import Link from "next/link";
 import { user } from "@/data/mock";
-import { eur, formatDate, gross, periodLabel, useTransactions, vatAmount } from "@/lib/transactions";
+import { dueDate, eur, formatDate, gross, periodLabel, rateLabel, useTransactions, vatAmount } from "@/lib/transactions";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -50,9 +50,32 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
 
       <dl className="mt-6 grid grid-cols-3 gap-4 rounded-xl bg-bar p-6">
         <div><dt className="text-sm text-muted">Net</dt><dd className="font-semibold tabular-nums">{eur(t.net)}</dd></div>
-        <div><dt className="text-sm text-muted">VAT {t.vatRate}%</dt><dd className="font-semibold tabular-nums">{eur(vatAmount(t))}</dd></div>
+        <div><dt className="text-sm text-muted">VAT {rateLabel(t)}</dt><dd className="font-semibold tabular-nums">{eur(vatAmount(t))}</dd></div>
         <div><dt className="text-sm text-muted">Total</dt><dd className="font-semibold tabular-nums">{eur(gross(t))}</dd></div>
       </dl>
+
+      {t.lines && (
+        <section className="mt-6" aria-label="Line items">
+          <h2 className="font-semibold">Line items</h2>
+          <ul className="mt-2 divide-y divide-bar rounded-xl border border-bar">
+            {t.lines.map((l, i) => (
+              <li key={i} className="flex justify-between gap-4 px-4 py-3">
+                <span className="min-w-0">
+                  <span className="block">{l.description}</span>
+                  <span className="block text-sm text-muted">
+                    {eur(l.net)} net · VAT {l.vatRate}% = {eur(Math.round(l.net * l.vatRate) / 100)}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+          {t.paymentTerms && (
+            <p className="mt-3 text-sm text-muted">
+              Payment terms: {t.paymentTerms} · due {formatDate(dueDate(t.date, t.paymentTerms))}
+            </p>
+          )}
+        </section>
+      )}
 
       <div className="mt-8">
         <label htmlFor="paid" className="block font-semibold">Paid on</label>
