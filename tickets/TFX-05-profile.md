@@ -1,4 +1,4 @@
-Status: Ready
+Status: In progress
 # TFX-05 — Settings: Profile
 
 Map: `docs/information-architecture.md`. Depends on TFX-01. Feeds TFX-04 (dashboard to-do) and TFX-06 (VAT return banner, Continue button).
