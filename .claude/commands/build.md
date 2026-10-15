@@ -24,3 +24,6 @@ Follow the `lean` skill (`.claude/skills/lean/SKILL.md`) for this and the next s
 - Set the ticket to `Status: In review` and tick the met criteria.
 - Commit, push, open a **draft PR** titled `TFX-NN: <title>`. Stop; Marina merges.
 - Reply with the PR link, the Vercel preview link once it appears, and any criterion not met.
+
+## Step 5: Run it locally for Marina
+Start the dev server on the ticket's branch (`preview_start` with `dev`), open the page(s) the ticket changed, and give her the localhost link so she can test by hand. Tell her which pages to try. Leave the server running.
