@@ -1,4 +1,4 @@
-Status: Backlog
+Status: In progress
 # TFX-04 — Dashboard
 
 Map: `docs/information-architecture.md`. Depends on TFX-02, TFX-03, TFX-05 (profile completeness) and TFX-06 (shared VAT calculation and filings record). Build order: 05, 06, 04, 07.
