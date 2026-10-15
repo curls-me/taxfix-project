@@ -1,4 +1,4 @@
-Status: Backlog
+Status: In progress
 # TFX-06 — VAT return and confirmation
 
 Map: `docs/information-architecture.md`. Depends on TFX-02, TFX-03 and TFX-05. Build order: 05, 06, 04, 07 — this ticket defines the shared VAT calculation that TFX-04 reuses.
