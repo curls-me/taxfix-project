@@ -1,10 +1,13 @@
-Status: Ready
+Status: Backlog
 # TFX-01 — App scaffold and first Vercel deploy
 
-Example ticket and first piece of work. Statuses: `Draft` → `Ready` → `In progress` → `In review` → `Done`.
+Example ticket and first piece of work. Statuses: `Backlog` → `In progress` → `In review` → `Done`.
 
 ## Scope
 Empty Next.js + TypeScript + Tailwind app with a shared layout (top nav: Dashboard, Transactions, Account), a visible demo note, and typed mock data for one fictional self-employed user. Deployed to Vercel from GitHub.
+
+### Site diagram
+
 
 ## Decisions
 - No Taxfix logo or branding; generic product name. (PRODUCT.md, brand commitments.)

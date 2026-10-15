@@ -8,7 +8,7 @@ description: Build one agreed ticket ("/build TFX-NN"): short plan, implement on
 Arguments: `$ARGUMENTS` (a ticket ID, e.g. `TFX-03`).
 
 ## Step 1: Check
-Read `tickets/TFX-NN-*.md`. If its status is not `Ready` or it has unresolved open questions, stop and say so: run `/spec` first. Read the feature's `ux.md` only if the ticket needs it. Open only the code files you will change.
+Read `tickets/TFX-NN-*.md`. If it has no `Spec agreed` line or has unresolved open questions, stop and say so: run `/spec` first. Read the feature's `docs/features/<slug>/ux.md`; if it is missing, ask whether to run `/ux-design` or skip it. Open only the code files you will change.
 
 ## Step 2: Plan (show, don't wait)
 Give a plan of at most five lines: screens or components touched, mock data needed, anything risky. Then continue unless something in it is a product decision; if so, ask.

@@ -11,9 +11,9 @@ Goal of the set-up: go from a short discovery to a shareable prototype fast and 
 ## Working agreements
 
 - **Branch, never `main`.** Work on a branch, push it, open a **draft PR**, then stop. Marina reviews and merges on GitHub.
-- **Spec before build.** Order: `/problem-definition` → `/ux-design` → `/spec` → `/build`. Skip a step only if Marina says so. Each feature's docs live in `docs/features/<slug>/`.
+- **Spec before build.** Order: `/problem-definition` → `/spec` → `/ux-design` →`/build`. Skip a step only if Marina says so. Each feature's docs live in `docs/features/<slug>/`.
 - **Quick mode for the live interview.** The prototype is prepared in advance, then improved or extended live. Add `quick` to any command (e.g. `/spec quick vat-overview`): all questions in one message, half-page outputs.
-- **Tickets are local.** One file per ticket in `tickets/` (`TFX-01-<slug>.md`, status on the first line: Draft, Ready, In progress, In review, Done). Linear is not connected.
+- **Tickets are local.** One file per ticket in `tickets/` (`TFX-01-<slug>.md`, status on the first line: Backlog, In progress, In review, Done; `/spec` adds a "Spec agreed" line when ready to build). Linear is not connected.
 - **Sessions end with `/decision-log`**, which appends to `local docs/decision-log.md`.
 - **Ask when unsure** whether Marina wants discussion or action. One line.
 

@@ -29,4 +29,4 @@ Write `docs/features/<slug>/problem.md`. Plain language, one page (quick mode: h
 - **Out of scope:** what this work will not address.
 - **Open questions:** decisions or facts still unresolved.
 
-Keep the problem separate from solutions; no feature list. Stop after writing the file and name the next step: `/ux-design <slug>`.
+Keep the problem separate from solutions; no feature list. Stop after writing the file and name the next step: `/spec <slug>`.
