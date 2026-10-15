@@ -1,7 +1,7 @@
 Status: Done
 # TFX-01 — App scaffold and first Vercel deploy
 
-First piece of work. Statuses: `Backlog` → `In progress` → `In review` → `Done`. Full map: `docs/information-architecture.md`.
+First piece of work. Statuses: `Backlog` → `Ready` → `In progress` → `In review` → `Done`. Full map: `docs/information-architecture.md`.
 
 ## Scope
 Next.js + TypeScript + Tailwind app with a shared layout (top nav: Dashboard, Transactions, Account), a visible demo note, empty placeholder pages for every route in the site diagram, and typed mock data for one fictional self-employed user. Deployed to Vercel from GitHub.

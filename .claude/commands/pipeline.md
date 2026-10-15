@@ -5,7 +5,7 @@ description: Run several tickets through spec, UX, build and local verification 
 
 # Pipeline
 
-Arguments: `$ARGUMENTS` (ticket IDs, in build order). Runs `/spec quick`, `/ux-design quick`, `/build` and `/verify` for each ticket. Running this command is Marina's approval to start one subagent per ticket in Phase 1.
+Arguments: `$ARGUMENTS` (ticket IDs, in build order). With no arguments, take every ticket with `Status: Ready`, in ticket-number order. Only `Ready` tickets run: if a named ticket is `Backlog`, leave it out and say so in one line (Marina promotes a ticket by changing its first line to `Status: Ready`). Runs `/spec quick`, `/ux-design quick`, `/build` and `/verify` for each ticket. Running this command is Marina's approval to start one subagent per ticket in Phase 1.
 
 ## Phase 0: Start clean
 `git fetch`. If local `main` is behind `origin/main`, fast-forward it. If there are uncommitted changes or a branch that isn't merged, tell Marina before going on.
