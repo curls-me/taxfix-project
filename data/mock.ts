@@ -3,6 +3,8 @@
 export type VatRate = 19 | 7 | 0;
 export type PaymentStatus = "paid" | "unpaid";
 
+export type InvoiceLine = { description: string; net: number; vatRate: VatRate };
+
 export type Transaction = {
   id: string;
   type: "income" | "expense";
@@ -19,6 +21,11 @@ export type Transaction = {
   vatOverride?: number | null; // tester-typed VAT; null/absent = calculated
   grossOverride?: number | null; // tester-typed gross; null/absent = calculated
   zeroVatReason?: string; // expenses at 0% only
+  lines?: InvoiceLine[]; // created invoices only; net/vatRate above are derived from these
+  serviceDate?: string; // created invoices only
+  clientAddress?: string;
+  paymentTerms?: string; // e.g. "14 days"
+  notes?: string;
 };
 
 export type User = {

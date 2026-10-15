@@ -1,4 +1,4 @@
-Status: Backlog
+Status: In progress
 # TFX-07 — Create invoice
 
 Map: `docs/information-architecture.md`. Depends on TFX-03 (income storage), TFX-05 (profile, for the sender block). UX: `docs/features/create-invoice/ux.md`.
@@ -11,7 +11,7 @@ Timing: not built in the current pipeline run. Next PR, once Marina marks this t
 A Create invoice form: invoice number, issue date, service date, client (name and address), line items (description, net amount, VAT rate per line), live totals (net, VAT, total), payment terms with the due date, and optional notes. The sender block (your name, address, tax number) is read from Profile. Saving adds the invoice to Income as unpaid; it then behaves like any other income item.
 
 ### Site diagram
-- Income tab → Create new → Create invoice (`/transactions/income/invoice`) → back to Income tab
+- Income tab → Create invoice button → Create invoice (`/transactions/income/invoice`) → back to Income tab
 - Income tab → invoice row → Income detail (`/transactions/income/[id]`), which also lists the line items
 - Create invoice → "Complete your profile →" → Profile (`/account/profile?from=/transactions/income/invoice`) → back to Create invoice, draft kept
 
@@ -24,7 +24,7 @@ A Create invoice form: invoice number, issue date, service date, client (name an
 1. `data/mock.ts`: add `InvoiceLine = { description: string; net: number; vatRate: VatRate }` and optional `lines?: InvoiceLine[]` on `Transaction` (plus optional `serviceDate`, `clientAddress`, `paymentTerms`, `notes`). Items without `lines` behave exactly as today.
 2. `lib/transactions.ts` `vatAmount(t)`: if `t.lines` is present and there is no `vatOverride`, return the sum of per-line VAT (each `round(net × rate) / 100`); otherwise unchanged. `gross(t)` follows from it. Widen the `Amounts` type to include `lines`.
 3. Top-level `vatRate` on an invoice item: the rate if all lines share it; otherwise the highest line rate as a stand-in. Anywhere a single rate is shown (lists, Income detail, VAT return rows) shows "Mixed" when line rates differ.
-4. `lib/vat.ts` `vatReturn(transactions, period)` (TFX-06): no change needed **if** it takes each item's VAT from `vatAmount(t)`, as TFX-06's decision "same amount the lists show" implies. If it computes `net × vatRate` itself, it must switch to `vatAmount`. This ticket adds a unit test: a paid mixed-rate invoice (19% + 7% lines) counts the per-line VAT sum in the month of its payment date, and the same invoice unpaid is not counted at all.
+4. `lib/vat.ts` `vatReturn(transactions, period)` (TFX-06): no change needed **if** it takes each item's VAT from `vatAmount(t)`, as TFX-06's decision "same amount the lists show" implies. If it computes `net × vatRate` itself, it must switch to `vatAmount`. No unit test (decided 2026-10-15: placeholder tax logic, no test runner added); `/verify` checks by hand that a paid mixed-rate invoice (19% + 7% lines) counts the per-line VAT sum in the month of its payment date, and an unpaid one is not counted.
 5. Created invoices' VAT: no `vatOverride` is set, so they never show the "edited" marker.
 - Unpaid until a payment date is set on Income detail; period line reads "Not counted until paid", as in TFX-03. Reason: VAT is cash-based (Istversteuerung): the payment date decides the month; unpaid income is not counted.
 - Invoice number is pre-filled with the next free number (format `2026-001`), editable; a number already used on another income item blocks saving. Reason: German invoices need unique numbers; pre-fill removes guesswork.
@@ -37,17 +37,27 @@ A Create invoice form: invoice number, issue date, service date, client (name an
 - No preview, PDF or sending. Saving only records it. Reason: out of scope; keeps it to one screen.
 - Created invoices can't be edited after saving (same as income amounts in TFX-03); delete stays as on Income detail today. Reason: editing is a later ticket.
 - Small change to Income detail: if the item has line items, list them under the totals. Reason: show the working (principle 2).
-- "Coming soon" on Create new is removed.
+- Income tab gets a "Create invoice" button next to "Add income" (see notes below).
+
+### Notes from spec check against current code (2026-10-15)
+- **Entry point:** the Income tab has no "Create new" / "Coming soon" today; it has one "Add income" button (`components/TransactionList.tsx`) to `/transactions/income/new`. Recommended: on the Income tab only, add a second button "Create invoice" next to "Add income" (no menu). "Coming soon" lives only in the unused `components/Placeholder.tsx`.
+- **`vatPeriod` is required on `Transaction`:** a new invoice sets `vatPeriod` = issue month (same rule as the Add income form for unpaid items); Income detail already rewrites it to the payment month when paid.
+- **`gross(t)` does not follow from `vatAmount(t)` today:** it computes `net × (100 + rate)` directly. For items with `lines` it must become `net + vatAmount(t)` (rounded to cents).
+- **Single-rate labels to switch to "Mixed":** `app/transactions/income/[id]/page.tsx` ("VAT {rate}%"), `app/filing/[period]/page.tsx` row label, and the Income list row.
+- **`vatReturn` already uses `vatAmount(t)`** (`lib/vat.ts`), so it needs no change once `vatAmount` handles lines.
+- **Profile:** key `vat-companion.profile.v1`; fields are name, taxNumber, street, postcode, city. Sender block = name, street, postcode + city, tax number; "complete" = `isProfileComplete`. `safeFrom` already accepts `/transactions/income/invoice`.
+- **No test runner exists** and none is added (decided 2026-10-15); the mixed-rate check is done by hand in `/verify`.
+- **Invoice items with lines are not editable through the edit form** (it would overwrite net/rate and break the lines); Income detail's payment-date control is the only change allowed, plus delete.
 
 ## Acceptance criteria
-- [ ] Income tab "Create new" opens Create invoice; no "Coming soon" remains.
+- [ ] Income tab shows "Create invoice" next to "Add income" and it opens Create invoice; no "Coming soon" remains.
 - [ ] Invoice number is pre-filled with the next free number and can be changed; a duplicate blocks saving with an inline message.
 - [ ] Issue date defaults to today, service date to the issue date; both editable.
 - [ ] Lines can be added (up to 10) and removed (not below 1); each needs a description, a net amount above 0 and a VAT rate.
 - [ ] Net, VAT and total update live from the lines and their rates; mixed rates show VAT per rate.
 - [ ] Payment terms show the resulting due date; the Income list does not show it.
 - [ ] Sender block shows Profile details, or a warning and "Complete your profile →" when incomplete; Profile's Save returns to the invoice with the draft intact.
-- [ ] A paid mixed-rate invoice counts the sum of its per-line VAT in the VAT return and dashboard; a unit test covers it.
+- [ ] A paid mixed-rate invoice counts the sum of its per-line VAT in the VAT return and dashboard (checked by hand in /verify).
 - [ ] Required fields are marked and block saving with an inline message; nothing entered is lost.
 - [ ] Save adds one unpaid income item with the summed net to the Income list and tab total, returns to the list, and survives a reload.
 - [ ] A newly created (unpaid) invoice does not appear in any VAT return or dashboard VAT figure until a payment date is set.
@@ -60,10 +70,12 @@ Logo upload, PDF download or preview, sending by email, e-invoice formats (XRech
 
 ## Copy
 - Page title: "Create invoice"
-- Button on Income tab: "Create new"
+- Button on Income tab: "Create invoice"
 - Period line: "Not counted until paid"
 - Sender block, incomplete: "Your name, address and tax number are missing. Invoices need them." Button: "Complete your profile →" [copy TBD, align with TFX-05]
 - Mixed rate shown in lists: "Mixed"
 - Duplicate number: "Invoice number 2026-004 is already used. Choose another."
 - Save confirmation: "Invoice created"
 - Field labels, line-item labels, payment term options, other errors: [copy TBD]
+
+Spec agreed 2026-10-15.

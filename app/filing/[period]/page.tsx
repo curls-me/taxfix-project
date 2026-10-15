@@ -3,7 +3,7 @@
 import { use, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { eur, formatDate, periodLabel, useTransactions, vatAmount } from "@/lib/transactions";
+import { eur, formatDate, periodLabel, rateLabel, useTransactions, vatAmount } from "@/lib/transactions";
 import { isValidPeriod, resultText, vatReturn } from "@/lib/vat";
 import { useProfile } from "@/lib/profile";
 import { submitFiling, useFilings } from "@/lib/filings";
@@ -62,7 +62,7 @@ export default function Page({ params }: { params: Promise<{ period: string }> }
         </span>
         <span className="shrink-0 text-right">
           <span className="block font-semibold tabular-nums">{eur(vatAmount(t))}</span>
-          <span className="block text-sm text-muted">VAT {t.vatRate}%</span>
+          <span className="block text-sm text-muted">VAT {rateLabel(t)}</span>
         </span>
       </Link>
     </li>

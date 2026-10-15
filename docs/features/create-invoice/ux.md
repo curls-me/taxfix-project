@@ -1,6 +1,6 @@
 # UX brief — TFX-07 Create invoice (quick)
 
-Ticket: `tickets/TFX-07-create-invoice.md`. Marina's answers applied 2026-10-15; ticket stays Backlog (next PR). Items marked **(suggestion)** are mine.
+Ticket: `tickets/TFX-07-create-invoice.md`. Marina's answers applied 2026-10-15; ticket now Ready. Entry point corrected 2026-10-15: there is no "Create new" button in the code; the Income tab gets a "Create invoice" button next to "Add income". Items marked **(suggestion)** are mine.
 
 ## Key screens
 
@@ -13,7 +13,7 @@ Ticket: `tickets/TFX-07-create-invoice.md`. Marina's answers applied 2026-10-15;
 **Income detail** (existing): adds a "Line items" list (description, net, rate, VAT) under the totals, and the due date.
 
 ## Main flow
-1. Income tab → Create new.
+1. Income tab → Create invoice.
 2. Number and dates are pre-filled; tester checks them.
 3. If the profile is incomplete, a warning and "Complete your profile →" appear; tester may go there (draft kept) and come back, or carry on.
 4. Enters client and one or more lines, each with its rate; totals update live.
@@ -44,7 +44,7 @@ Ticket: `tickets/TFX-07-create-invoice.md`. Marina's answers applied 2026-10-15;
 
 | From → to | How | Status |
 |---|---|---|
-| Income tab → Create invoice | "Create new" button | Exists as "Coming soon"; this ticket wires it |
+| Income tab → Create invoice | "Create invoice" button next to "Add income" | New (no "Create new" exists in code) |
 | Dashboard → Create invoice | none | **Missing.** Dashboard has only Add income / Add expense. Suggest leaving it (fewer entry points), or a later ticket |
 | Create invoice → Profile | "Complete your profile →" with `?from=/transactions/income/invoice` | New; relies on TFX-05's return-to rule |
 | Profile → Create invoice | Profile Save returns via `from` | Works if TFX-05 accepts this path (internal, starts with `/`) |
