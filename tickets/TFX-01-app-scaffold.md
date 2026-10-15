@@ -1,4 +1,4 @@
-Status: Backlog
+Status: In review
 # TFX-01 — App scaffold and first Vercel deploy
 
 First piece of work. Statuses: `Backlog` → `In progress` → `In review` → `Done`. Full map: `docs/information-architecture.md`.
@@ -35,11 +35,11 @@ Nav links: Dashboard → `/`, Transactions → `/transactions`, Account → `/ac
 - Connecting the GitHub repo to Vercel is a one-time step Marina does.
 
 ## Acceptance criteria
-- [ ] `npm run build` passes.
-- [ ] Every route in the site diagram opens a placeholder page; dynamic routes work with any id.
-- [ ] Each nav item goes to its page and the current page is marked.
-- [ ] Demo note visible on every page: "Prototype with demo figures. Not tax advice. Not official Taxfix software."
-- [ ] Mock data file is typed and contains no real people or invoices.
+- [x] `npm run build` passes.
+- [x] Every route in the site diagram opens a placeholder page; dynamic routes work with any id.
+- [x] Each nav item goes to its page and the current page is marked.
+- [x] Demo note visible on every page: "Prototype with demo figures. Not tax advice. Not official Taxfix software."
+- [x] Mock data file is typed and contains no real people or invoices.
 - [ ] Vercel preview link works from the draft PR.
 
 ## Out of scope
