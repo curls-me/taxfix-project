@@ -1,4 +1,4 @@
-Status: In review
+Status: Done
 # TFX-02 — Transactions: income and expenses lists
 
 Map: `docs/information-architecture.md`. Depends on TFX-01.
