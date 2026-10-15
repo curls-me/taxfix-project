@@ -50,20 +50,20 @@ A Create invoice form: invoice number, issue date, service date, client (name an
 - **Invoice items with lines are not editable through the edit form** (it would overwrite net/rate and break the lines); Income detail's payment-date control is the only change allowed, plus delete.
 
 ## Acceptance criteria
-- [ ] Income tab shows "Create invoice" next to "Add income" and it opens Create invoice; no "Coming soon" remains.
-- [ ] Invoice number is pre-filled with the next free number and can be changed; a duplicate blocks saving with an inline message.
-- [ ] Issue date defaults to today, service date to the issue date; both editable.
-- [ ] Lines can be added (up to 10) and removed (not below 1); each needs a description, a net amount above 0 and a VAT rate.
-- [ ] Net, VAT and total update live from the lines and their rates; mixed rates show VAT per rate.
-- [ ] Payment terms show the resulting due date; the Income list does not show it.
-- [ ] Sender block shows Profile details, or a warning and "Complete your profile →" when incomplete; Profile's Save returns to the invoice with the draft intact.
-- [ ] A paid mixed-rate invoice counts the sum of its per-line VAT in the VAT return and dashboard (checked by hand in /verify).
-- [ ] Required fields are marked and block saving with an inline message; nothing entered is lost.
-- [ ] Save adds one unpaid income item with the summed net to the Income list and tab total, returns to the list, and survives a reload.
-- [ ] A newly created (unpaid) invoice does not appear in any VAT return or dashboard VAT figure until a payment date is set.
-- [ ] Income detail of a created invoice lists its line items; setting a payment date there moves it into that month's period.
-- [ ] Cancel returns without saving.
-- [ ] Demo note visible; `npm run build` passes.
+- [x] Income tab shows "Create invoice" next to "Add income" and it opens Create invoice; no "Coming soon" remains.
+- [x] Invoice number is pre-filled with the next free number and can be changed; a duplicate blocks saving with an inline message.
+- [x] Issue date defaults to today, service date to the issue date; both editable.
+- [x] Lines can be added (up to 10) and removed (not below 1); each needs a description, a net amount above 0 and a VAT rate.
+- [x] Net, VAT and total update live from the lines and their rates; mixed rates show VAT per rate.
+- [x] Payment terms show the resulting due date; the Income list does not show it.
+- [x] Sender block shows Profile details, or a warning and "Complete your profile →" when incomplete; Profile's Save returns to the invoice with the draft intact.
+- [x] A paid mixed-rate invoice counts the sum of its per-line VAT in the VAT return and dashboard (checked by hand in /verify).
+- [x] Required fields are marked and block saving with an inline message; nothing entered is lost.
+- [x] Save adds one unpaid income item with the summed net to the Income list and tab total, returns to the list, and survives a reload.
+- [x] A newly created (unpaid) invoice does not appear in any VAT return or dashboard VAT figure until a payment date is set.
+- [x] Income detail of a created invoice lists its line items; setting a payment date there moves it into that month's period.
+- [x] Cancel returns without saving.
+- [x] Demo note visible; `npm run build` passes.
 
 ## Out of scope
 Logo upload, PDF download or preview, sending by email, e-invoice formats (XRechnung, ZUGFeRD), net totals split by rate on the VAT return, saved clients, editing a saved invoice, discounts, reverse-charge wording, reminders for overdue invoices.
