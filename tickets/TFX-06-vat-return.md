@@ -1,4 +1,4 @@
-Status: In progress
+Status: Done
 # TFX-06 — VAT return and confirmation
 
 Map: `docs/information-architecture.md`. Depends on TFX-02, TFX-03 and TFX-05. Build order: 05, 06, 04, 07 — this ticket defines the shared VAT calculation that TFX-04 reuses.
@@ -43,18 +43,18 @@ Monthly advance VAT return for one period (`/filing/2026-10`). Shows the filing 
 - Confirmation says nothing was sent to the tax office.
 
 ## Acceptance criteria
-- [ ] `/filing/2026-10` shows the period name, the filing window, the counting rule line and the demo note.
-- [ ] Income paid in the period and expenses issued in the period are listed; unpaid income is not; nothing from other months.
-- [ ] With the mock data, October 2026 shows VAT owed €57.00, VAT saved €41.89, Result "You pay €15.11".
-- [ ] Result equals owed minus saved, worded without a minus sign.
-- [ ] Each listed item shows its VAT and links to its detail or edit screen; an edit there changes the return on coming back.
-- [ ] Profile banner shows while the profile is incomplete and links to Profile with `?from=`; after saving the tester is back on the return and the banner is gone.
-- [ ] Continue is disabled with a reason when the profile is incomplete or the period is empty, and enabled otherwise.
-- [ ] Empty period shows dashes for the three figures and a line explaining why.
-- [ ] Continue opens the confirmation; the submission survives a reload; the dashboard card shows "Submitted (demo)"; the return then shows "Resubmit".
-- [ ] Invalid period shows the not-found message; confirmation without a submission shows its message.
-- [ ] `vatReturn` in `lib/vat.ts` matches the signature above.
-- [ ] `npm run build` passes.
+- [x] `/filing/2026-10` shows the period name, the filing window, the counting rule line and the demo note.
+- [x] Income paid in the period and expenses issued in the period are listed; unpaid income is not; nothing from other months.
+- [x] With the mock data, October 2026 shows VAT owed €57.00, VAT saved €41.89, Result "You pay €15.11".
+- [x] Result equals owed minus saved, worded without a minus sign.
+- [x] Each listed item shows its VAT and links to its detail or edit screen; an edit there changes the return on coming back.
+- [x] Profile banner shows while the profile is incomplete and links to Profile with `?from=`; after saving the tester is back on the return and the banner is gone.
+- [x] Continue is disabled with a reason when the profile is incomplete or the period is empty, and enabled otherwise.
+- [x] Empty period shows dashes for the three figures and a line explaining why.
+- [x] Continue opens the confirmation; the submission survives a reload; the dashboard card shows "Submitted (demo)"; the return then shows "Resubmit".
+- [x] Invalid period shows the not-found message; confirmation without a submission shows its message.
+- [x] `vatReturn` in `lib/vat.ts` matches the signature above.
+- [x] `npm run build` passes.
 
 ## Out of scope
 Quarterly filing, real submission to ELSTER, tax advice, annual return, month navigation (TFX-08), per-line-item VAT rates (TFX-07), editing amounts on this screen, PDF/export, automated tests.

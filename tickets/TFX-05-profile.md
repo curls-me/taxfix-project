@@ -1,4 +1,4 @@
-Status: In progress
+Status: Done
 # TFX-05 — Settings: Profile
 
 Map: `docs/information-architecture.md`. Depends on TFX-01. Feeds TFX-04 (dashboard to-do) and TFX-06 (VAT return banner, Continue button).
@@ -25,14 +25,14 @@ Settings page (`/account`, nav label "Account") listing one item, Profile. Profi
 - Stored in localStorage under `vat-companion.profile.v1`, next to the transactions key. Reason: same pattern as TFX-02/03.
 
 ## Acceptance criteria
-- [ ] Account page lists Profile only, with a status ("Complete" / "Missing details"); no other links.
-- [ ] Profile shows name, tax number, street, postcode, city, and read-only "Filing period: Monthly".
-- [ ] Required fields are marked; saving with any blank or badly formatted field is blocked with an inline message and keeps what was typed.
-- [ ] Save stores the profile in the browser; it survives a reload and pre-fills the form when reopened.
-- [ ] Save returns to the `from` page (Dashboard or VAT return), or to Account if none or not an internal path.
-- [ ] Profile counts as complete only when all required fields are filled; this is the single check used by TFX-04 and TFX-06.
-- [ ] After a complete save, the dashboard to-do and the VAT return banner are gone (verified once TFX-04/06 exist).
-- [ ] Demo note visible; `npm run build` passes.
+- [x] Account page lists Profile only, with a status ("Complete" / "Missing details"); no other links.
+- [x] Profile shows name, tax number, street, postcode, city, and read-only "Filing period: Monthly".
+- [x] Required fields are marked; saving with any blank or badly formatted field is blocked with an inline message and keeps what was typed.
+- [x] Save stores the profile in the browser; it survives a reload and pre-fills the form when reopened.
+- [x] Save returns to the `from` page (Dashboard or VAT return), or to Account if none or not an internal path.
+- [x] Profile counts as complete only when all required fields are filled; this is the single check used by TFX-04 and TFX-06.
+- [x] After a complete save, the dashboard to-do and the VAT return banner are gone (verified once TFX-04/06 exist).
+- [x] Demo note visible; `npm run build` passes.
 
 ## Out of scope
 Billing, subscription, vouchers, privacy settings, close account, change email, quarterly filing, real tax-number validation, more than one profile.

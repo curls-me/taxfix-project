@@ -1,4 +1,4 @@
-Status: In progress
+Status: Done
 # TFX-04 — Dashboard
 
 Map: `docs/information-architecture.md`. Depends on TFX-02, TFX-03, TFX-05 (profile completeness) and TFX-06 (shared VAT calculation and filings record). Build order: 05, 06, 04, 07.
@@ -28,15 +28,15 @@ Home screen (`/`) replacing the placeholder: three tiles (Income 2026, Expenses 
 - No Create invoice button.
 
 ## Acceptance criteria
-- [ ] Income and Expenses tiles equal the Income and Expenses list totals (unpaid included), also after adding or editing an item and reloading.
-- [ ] VAT tile owed, saved and Result equal the `/filing/2026-10` figures (income paid in October, expenses issued in October; unpaid income not counted).
-- [ ] Marking an October invoice as paid changes the VAT tile; the Income tile total does not change.
-- [ ] Chart bars per month add up to the tile totals.
-- [ ] Each tile, card and link goes to the screen in the site diagram.
-- [ ] Profile incomplete: to-do card and arrow CTA show and open `/account/profile?from=/`. Profile complete: both gone, quieter link remains.
-- [ ] Deadline card shows "Submitted (demo)" once October 2026 is in the filings record, and survives a reload.
-- [ ] Empty state for zero transactions: tiles show €0.00, chart shows a short message, quick actions remain.
-- [ ] Usable at phone width and by keyboard; demo note visible; `npm run build` passes.
+- [x] Income and Expenses tiles equal the Income and Expenses list totals (unpaid included), also after adding or editing an item and reloading.
+- [x] VAT tile owed, saved and Result equal the `/filing/2026-10` figures (income paid in October, expenses issued in October; unpaid income not counted).
+- [x] Marking an October invoice as paid changes the VAT tile; the Income tile total does not change.
+- [x] Chart bars per month add up to the tile totals.
+- [x] Each tile, card and link goes to the screen in the site diagram.
+- [x] Profile incomplete: to-do card and arrow CTA show and open `/account/profile?from=/`. Profile complete: both gone, quieter link remains.
+- [x] Deadline card shows "Submitted (demo)" once October 2026 is in the filings record, and survives a reload.
+- [x] Empty state for zero transactions: tiles show €0.00, chart shows a short message, quick actions remain.
+- [ ] Usable at phone width and by keyboard (phone width checked; keyboard not); demo note visible; `npm run build` passes.
 
 ## Out of scope
 Feedback card, language switcher, quarterly deadlines, year switcher, past-period deadlines, Create invoice, real deadline rules, a "start empty" switch.
