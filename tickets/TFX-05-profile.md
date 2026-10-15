@@ -8,7 +8,7 @@ Settings page (`/account`, nav label "Account") listing one item, Profile. Profi
 
 ### Site diagram
 - Account (`/account`) → Profile (`/account/profile`) → back to Account
-- Dashboard to-do → Profile (`?from=/`) → back to Dashboard
+- Dashboard to-do card and Dashboard arrow CTA → Profile (`?from=/`) → back to Dashboard
 - VAT return banner → Profile (`?from=/filing/2026-10`) → back to VAT return
 
 ## Decisions
@@ -18,12 +18,11 @@ Settings page (`/account`, nav label "Account") listing one item, Profile. Profi
 - Light format check only: postcode is 5 digits; tax number is 10–13 digits once spaces and slashes are removed. Reason: catches typos without pretending to validate real tax numbers.
 - Return-to: pages linking to Profile add `?from=<path>`; Save goes back there. Only internal paths starting with `/` are accepted; anything else, or no `from`, returns to `/account`. Reason: ticket decision; the check stops the link being used to send testers to another site.
 - Saving with fields missing is blocked with inline messages. Nothing entered is lost. Reason: a half-filled profile would never clear the to-do, so partial saves add confusion.
-- Placeholders are obviously fictional (e.g. "Erika Mustermann", "12/345/67890", "Musterstraße 1"). Reason: no real personal data.
-- Profile starts empty for every new tester (no mock profile). Reason: the to-do and banner are part of the demo story.
+- Fields start empty (no pre-filled values) but show fictional example text as input placeholders: "Max Mustermann", "12/345/67890", "Musterstr. 1", "10115", "Berlin". Reason: testers see the expected format; the to-do and banner clearing is part of the demo story; no real personal data.
+- Address is three fields: street and number, postcode, city. Reason: matches German forms and allows the postcode check.
+- Cancel link returns to `from` (or `/account`) without saving. Reason: a way out without losing the place.
+- Dashboard links to Profile twice, both with `?from=/`: the to-do card and an arrow CTA (TFX-04 builds both). Reason: Marina's call; makes the gate easy to find.
 - Stored in localStorage under `vat-companion.profile.v1`, next to the transactions key. Reason: same pattern as TFX-02/03.
-- Open question: should Profile start empty or pre-filled? Recommended: empty, so testers see the to-do and banner clear.
-- Open question: one address field or three (street, postcode, city)? Recommended: three, it matches German forms and allows the postcode check.
-- Open question: is a Cancel / Back link needed on Profile? Recommended: yes, "Cancel" returns to `from` without saving.
 
 ## Acceptance criteria
 - [ ] Account page lists Profile only, with a status ("Complete" / "Missing details"); no other links.
@@ -44,4 +43,6 @@ Billing, subscription, vouchers, privacy settings, close account, change email, 
 - Filing period: "Monthly (the only option in this demo)".
 - Errors: "Please enter your name" / "Please enter your tax number" / "Tax number should have 10 to 13 digits" / "Postcode should have 5 digits".
 - Buttons: "Save" / "Cancel". Saved confirmation: [copy TBD]
-- Field labels and placeholders: [copy TBD beyond the examples above]
+- Placeholders: "Max Mustermann", "12/345/67890", "Musterstr. 1", "10115", "Berlin". Field labels: [copy TBD]
+
+Spec agreed 2026-10-15.

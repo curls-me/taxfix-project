@@ -1,6 +1,4 @@
-# TFX-05 Profile — UX brief (quick, draft)
-
-Draft: ticket has no "Spec agreed" line yet; open questions are listed in the ticket.
+# TFX-05 Profile — UX brief (quick)
 
 ## Key screens
 - **Account** (`/account`): one card, "Profile", with a status badge (Complete / Missing details). Main action: open Profile.
@@ -19,12 +17,29 @@ Draft: ticket has no "Spec agreed" line yet; open questions are listed in the ti
 
 ## States
 - **Account:** Missing details (amber badge) / Complete (green badge).
-- **Profile empty:** placeholders only, no errors until Save is pressed.
+- **Profile empty:** fields empty with example placeholders ("Max Mustermann", "Musterstr. 1", "10115", "Berlin", "12/345/67890"), no errors until Save is pressed.
 - **Validation error:** red message under each failing field; focus moves to the first one.
 - **Success:** back on the previous page; suggestion: a short "Profile saved" note there (copy TBD).
+
+## Connections
+**In (links to Profile):**
+- Account page → Profile (no `from`; Save/Cancel return to Account).
+- Dashboard to-do card → Profile `?from=/` (TFX-04).
+- Dashboard arrow CTA → Profile `?from=/` (TFX-04).
+- VAT return banner → Profile `?from=/filing/2026-10` (TFX-06).
+- Main nav "Account" → Account page.
+
+**Out (from Profile):** Save → `from` page or Account. Cancel → same, without saving. Main nav stays available.
+
+**Flags:**
+- Not a dead end: Profile always has Save, Cancel and the nav.
+- After saving from the Dashboard, the to-do and CTA should disappear (TFX-04 must hide both when complete, or the CTA becomes a stale link).
+- VAT return banner should use the real current period path, not a hard-coded `2026-10`, if TFX-06 supports other periods.
+- Income / Expense lists: no link to Profile, and none needed (profile is not required to record transactions).
+- Create invoice (TFX-07, future): invoices normally carry the seller's name, address and tax number. If TFX-07 reads them from Profile, it needs its own link to Profile with `?from=` when details are missing; otherwise a tester hits a blank seller block with no way to fix it. Flag for TFX-07's spec.
 
 ## Suggestions (not in the ticket)
 - Show the German term next to "Tax number" for trust.
 - Focus the first error on failed save.
 
-Next step: `/build TFX-05` once the spec is agreed.
+Next step: `/build TFX-05`.
