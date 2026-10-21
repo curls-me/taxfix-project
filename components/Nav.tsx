@@ -8,6 +8,7 @@ const ITEMS = [
   { label: "Dashboard", href: "/" },
   { label: "Transactions", href: "/transactions" },
   { label: "Account", href: "/account" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 export default function Nav() {
@@ -22,13 +23,13 @@ export default function Nav() {
           {PRODUCT_NAME}
         </Link>
         <nav aria-label="Main">
-          <ul className="flex gap-1 text-sm font-medium sm:gap-4 sm:text-base">
+          <ul className="flex text-sm font-medium sm:gap-4 sm:text-base">
             {ITEMS.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   aria-current={isCurrent(item.href) ? "page" : undefined}
-                  className={`block rounded-lg px-3 py-2 ${
+                  className={`block rounded-lg px-2 py-2 sm:px-3 ${
                     isCurrent(item.href)
                       ? "bg-lime-soft font-semibold text-forest"
                       : "text-muted hover:text-ink"
