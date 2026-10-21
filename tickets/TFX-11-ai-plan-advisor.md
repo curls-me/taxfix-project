@@ -17,16 +17,16 @@ Plans (from the case pack): Self-service €39, Self-service + Check €79, Expe
 - **One PR.** Checkout, real AI, analytics and A/B testing are follow-ups.
 
 ## Acceptance criteria
-- [ ] `/pricing` is reachable and shows all three plans with price and what you get, with no "Compare plans" link needed on a 375px-wide screen.
-- [ ] Each plan states in one plain line who does the work (you / you + an expert reviews / an expert does it).
-- [ ] The assistant asks exactly 3 closed questions (two fixed answers each), one at a time, and ends with one recommended plan and the reasons in plain language.
-- [ ] The recommendation can be overridden (user picks another plan) and the questions can be restarted.
-- [ ] Different answers lead to different recommendations (all three plans can be recommended).
-- [ ] Self-service + Check is explained against Expert service on the page and in the recommendation.
-- [ ] Choosing a plan shows a "demo, checkout not built" note and nothing is submitted or paid.
-- [ ] A visible demo note states plans, prices and figures are illustrative.
-- [ ] Works on desktop and mobile widths; assistant usable by keyboard.
-- [ ] No real personal data; no secrets; `npm run build` passes.
+- [x] `/pricing` is reachable and shows all three plans with price and what you get, with no "Compare plans" link needed on a 375px-wide screen.
+- [x] Each plan states in one plain line who does the work (you / you + an expert reviews / an expert does it).
+- [x] The assistant asks exactly 3 closed questions (two fixed answers each), one at a time, and ends with one recommended plan and the reasons in plain language.
+- [x] The recommendation can be overridden (user picks another plan) and the questions can be restarted.
+- [x] Different answers lead to different recommendations (all three plans can be recommended).
+- [x] Self-service + Check is explained against Expert service on the page and in the recommendation.
+- [x] Choosing a plan shows a "demo, checkout not built" note and nothing is submitted or paid.
+- [x] A visible demo note states plans, prices and figures are illustrative.
+- [x] Works on desktop and mobile widths; assistant usable by keyboard.
+- [x] No real personal data; no secrets; `npm run build` passes.
 
 ## Out of scope
 - Real AI or any API call; checkout; analytics; A/B testing.
