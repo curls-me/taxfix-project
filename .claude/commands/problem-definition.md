@@ -8,7 +8,7 @@ description: Turn a short discovery input into a one-page problem definition for
 Help me define the problem before choosing a solution. Arguments: `$ARGUMENTS` (optional `quick`, then a short feature slug such as `vat-overview`).
 
 ## Context
-Read only `PRODUCT.md` and `docs/company-context.md`. Do not read other files unless I name them. Use only facts supported by this context or my answers. Never silently decide product questions.
+Read only `PRODUCT.md`, `docs/company-context.md` and the persona `docs/persona-nina.md` (use her as the default user and her jobs to be done; draft, not research). Do not read other files unless I name them. Use only facts supported by this context or my answers. Never silently decide product questions.
 
 ## Discovery
 Start from my short description of who the user is and what hurts.
