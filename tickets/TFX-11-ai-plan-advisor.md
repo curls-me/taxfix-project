@@ -1,4 +1,4 @@
-Status: In progress
+Status: In review
 # TFX-11 — Pricing page with a plan advisor
 Feature: docs/features/ai-plan-advisor/
 
