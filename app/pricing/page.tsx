@@ -19,6 +19,7 @@ export default function Page() {
     <div className="max-w-4xl">
       <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Choose your plan</h1>
       <p className="mt-3 text-lg text-muted">For your annual tax return as a self-employed person.</p>
+      <p className="mt-1 text-sm text-muted">Demo: plans, prices and figures are illustrative.</p>
 
       {chosen ? (
         <div role="status" className="mt-8 rounded-xl bg-lime-soft p-5">
