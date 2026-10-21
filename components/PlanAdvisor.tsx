@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import PlanChat from "@/components/PlanChat";
 import { PLANS, type PlanId } from "@/lib/plans";
 
 type Option = { value: string; label: string; hint: string };
@@ -74,9 +75,22 @@ export default function PlanAdvisor({
 }) {
   const [answers, setAnswers] = useState<string[]>([]);
   const [step, setStep] = useState(0);
+  const [chat, setChat] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => heading.current?.focus(), [step]);
+
+  if (chat)
+    return (
+      <PlanChat
+        onResult={onResult}
+        onChoose={onChoose}
+        onBack={() => {
+          onResult(null);
+          setChat(false);
+        }}
+      />
+    );
 
   const done = step === QUESTIONS.length;
   const plan = done ? recommend(answers) : null;
@@ -162,6 +176,9 @@ export default function PlanAdvisor({
           <strong>Self-service ({PLANS.self.price}):</strong> you complete the return yourself, the app runs automatic checks, and no person reads it. <strong>Self-service + Check ({PLANS.check.price}):</strong> the same, plus an expert reviews your finished return before it is submitted. You still do the work. <strong>Expert service ({PLANS.expert.price}):</strong> an expert does the return for you.
         </p>
       </details>
+      <button onClick={() => setChat(true)} className="mt-3 text-sm font-semibold text-forest underline">
+        Still unsure? Chat with the plan assistant
+      </button>
       <div className="mt-5 flex items-center gap-3">
         {step > 0 && (
           <button onClick={() => setStep(step - 1)} className="rounded-lg border border-forest px-4 py-2 font-semibold text-forest">

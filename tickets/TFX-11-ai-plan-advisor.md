@@ -11,6 +11,7 @@ Plans (from the case pack): Self-service €39, Self-service + Check €79, Expe
 - **Plan comparison plus assistant, not assistant only.** Mobile converts at 9.2% vs 13.7% on desktop and the comparison is hidden behind a link; the comparison fixes that directly, the assistant covers "which plan do I need".
 - **Scripted assistant, no live AI.** Fast, free, predictable, no key or backend (repo rule). It is a demo of the idea, not real AI.
 - **Check stays in the recommendations**, explained plainly against Expert, so we can learn whether it works when understood. Dropping it is not decided here.
+- **Fake demo chat for the unsure (added 2026-10-21, Marina).** A "Still unsure? Chat with the plan assistant" link on each question opens a chat with pre-filled replies; the user taps suggested replies, no typing, no live AI. It explains the plans and ends in the same three recommendations.
 - **Recommend by fit, not price.** The assistant may recommend the cheapest plan that fits and always shows its reasons; no upselling.
 - **Recommendation is editable.** The user can pick any plan, or restart the questions.
 - **No analytics.** KPIs (visit → paid, Check refund rate, "which plan" tickets) are what a live test would track, not built here.
@@ -22,6 +23,7 @@ Plans (from the case pack): Self-service €39, Self-service + Check €79, Expe
 - [x] The assistant asks exactly 3 closed questions (two fixed answers each), one at a time, and ends with one recommended plan and the reasons in plain language.
 - [x] The recommendation can be overridden (user picks another plan) and the questions can be restarted.
 - [x] Different answers lead to different recommendations (all three plans can be recommended).
+- [x] From any question, "Still unsure? Chat with the plan assistant" opens a chat with scripted replies, labelled as a demo, with tappable replies; it can explain Self-service vs Check and Check vs Expert, and end with a plan the user can choose; "Back to the questions" returns to the questions.
 - [x] Self-service + Check is explained against Expert service on the page and in the recommendation.
 - [x] Choosing a plan shows a "demo, checkout not built" note and nothing is submitted or paid.
 - [x] A visible demo note states plans, prices and figures are illustrative.
